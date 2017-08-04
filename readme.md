@@ -53,7 +53,7 @@
 
 <p>
 <p>
-Login Information<br>
+<strong>Login Information</strong><br>
 Administrator : admin@gmail.com | rahasia <br>
 Guru : guru@gmail.com | rahasia <br>
 Siswa : siswa@gmail.com | rahasia <br>
