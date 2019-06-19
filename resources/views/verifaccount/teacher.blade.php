@@ -53,7 +53,7 @@
 								<span class="label label-success">active</span>
 							@endif
                         </td>
-                        <td><a href="{{ route('verifteacher.show',$data->user->id) }}" class="btn btn-xs btn-info">verif</a></td>
+                        <td><a href="{{ route('verifteacher.show',$data->user->id) }}" class="btn btn-xs btn-info">Verifikasi</a></td>
                       </tr>
                     @endforeach
                   @else
