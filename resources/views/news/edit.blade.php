@@ -5,6 +5,9 @@
 @endsection
 
 @section('main-content')
+@section('contentheader_title')
+	Berita
+@endsection
 <div class="container-fluid spark-screen">
 	<div class="row">
 		<div class="col-md-12">

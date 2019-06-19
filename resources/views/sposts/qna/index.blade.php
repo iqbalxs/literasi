@@ -5,6 +5,9 @@
 @endsection
 
 @section('main-content')
+@section('contentheader_title')
+	Tanya Jawab
+@endsection
 <div class="container-fluid spark-screen">
 	@include('layouts._flash')
 	<div class="row">

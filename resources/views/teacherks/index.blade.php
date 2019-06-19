@@ -4,8 +4,10 @@
 	{{ config('app.name') }}
 @endsection
 
-
 @section('main-content')
+@section('contentheader_title')
+	Karya Siswa
+@endsection
 <div class="container-fluid spark-screen">
 @include('layouts._flash')
 	<div class="row">
