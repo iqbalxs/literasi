@@ -39,6 +39,7 @@
     <li class="{{set_active('announcements.index')}}"><a href="{{ route('announcements.index') }}"><i class='fa fa-volume-up'></i> <span>Pengumuman</span></a></li>
     <li class="{{set_active('news.index')}}"><a href="{{ route('news.index') }}"><i class='fa fa-newspaper-o'></i> <span>Berita</span></a></li>
     <li class="{{set_active('articles.index')}}"><a href="{{ route('articles.index') }}"><i class='fa fa-pencil'></i> <span>Artikel</span></a></li>
+    <li class="{{set_active('user.index')}}"><a href="{{ route('user.index') }}"><i class='fa fa-users'></i> <span>Pengguna</span></a></li>
     <li class="treeview {{set_active(['dictionary','qna','greeting','history','background','orgchart'])}}">
         <a href="#"><i class='fa fa-link'></i> <span>Web</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">

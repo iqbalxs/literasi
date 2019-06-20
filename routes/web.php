@@ -49,6 +49,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'role:admin']], function
   Route::resource('verifkg', 'VerifKGController');
   Route::resource('verifpi', 'VerifPIController');
   Route::resource('verifteacher', 'VerifTeacherController');
+  Route::resource('user', 'UserController');
 
   //route sp-all
   Route::get('web/dictionary', 'AllSPController@dictionary')->name('dictionary');
