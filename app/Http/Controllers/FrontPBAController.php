@@ -77,25 +77,19 @@ class FrontPBAController extends Controller
 
 	//view beranda - news all
 	public function beranda(){
-		$bnews = MainPost::with('user')
+		$news = MainPost::with('user')
 				->where('category','like','news')
 				->where('status','=','publish')
 				->orderBy('created_at', 'asc')
-				->paginate(4);
+				->limit(4)->get();
 
-		$barticles = MainPost::with('user')
+		$articles = MainPost::with('user')
 					->where('category','like','articles')
 					->where('status','=','publish')
 					->orderBy('created_at', 'asc')
-					->paginate(4);
+					->limit(4)->get();
 
-		$bannouncements = MainPost::with('user')
-						->where('category','like','announcement')
-						->where('status','=','publish')
-						->orderBy('created_at', 'asc')
-						->paginate(4);
-
-		return view('welcome')->with(compact('bnews','barticles','bannouncements'));
+		return view('welcome')->with(compact('news','articles','announcements'));
 	}
 
 }
