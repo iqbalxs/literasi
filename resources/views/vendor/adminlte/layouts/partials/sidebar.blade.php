@@ -8,7 +8,7 @@
 @if (! Auth::guest())
     <div class="user-panel">
         <div class="pull-left image">
-            <img src="{{ asset('/img/user1-128x128.jpg') }}" class="img-circle" alt="User Image" />
+            <img src="{{ isset(Auth::user()->avatar) ? asset('/img/'.Auth::user()->avatar) : asset('/img/user1-128x128.jpg') }}" class="img-circle" alt="User Image" />
         </div>
         <div class="pull-left info">
             <p>{{ Auth::user()->name }}</p>
@@ -52,7 +52,6 @@
         </ul>
     </li>
     <li class="header">GURU</li>
-    <li class="{{set_active('verifteacher.index')}}"><a href="{{ route('verifteacher.index') }}"><i class='fa fa-check'></i> <span>Verifikasi Akun Guru</span></a></li>
     <li class="{{set_active('verifkg.index')}}"><a href="{{ route('verifkg.index') }}"><i class='fa fa-pencil'></i> <span>Karya Guru</span></a></li>
     <li class="{{set_active('verifpi.index')}}"><a href="{{ route('verifpi.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>
     @endrole

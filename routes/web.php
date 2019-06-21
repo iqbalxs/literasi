@@ -15,6 +15,12 @@ Route::get('/register-student', function () {
     return view('auth.register_student');
 });
 
+// profile - reset password
+Route::get('profile','UserController@profile');
+Route::patch('/profile/update','UserController@updateProfile');
+Route::get('/profile/password', 'UserController@editPassword');
+Route::post('/profile/password', 'UserController@updatePassword');
+
 //route front - single post 
 Route::get('/kamus', 'FrontSpController@dictionary');
 Route::get('/tanya-jawab', 'FrontSpController@qna');
@@ -50,6 +56,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'role:admin']], function
   Route::resource('verifpi', 'VerifPIController');
   Route::resource('verifteacher', 'VerifTeacherController');
   Route::resource('user', 'UserController');
+  Route::get('/user/{id}/verification', 'UserController@verification')->name('user.verification');
 
   //route sp-all
   Route::get('web/dictionary', 'AllSPController@dictionary')->name('dictionary');

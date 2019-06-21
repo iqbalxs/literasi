@@ -24,15 +24,24 @@ class UserController extends Controller
     {
         $users = User::query();
         
+        $type = $request->get('type');
         if ($request->has('type')) {
-            $type = $request->get('type', 'siswa');
-            $users->whereRoleIs($type);
+            if ($type != 'all') {
+              $users->whereRoleIs($type);
+            }
+        }
+
+        $verified = $request->get('verified');
+        if ($request->has('verified')) {
+          if ($verified != 'all'){
+            $users->where('is_verified', $verified);
+          }
         }
 
         $users = $users->paginate(20);
 
         // simple use = whereRoleIs
-        return view('users.index')->with(compact('users'));
+        return view('users.index')->with(compact('users', 'verified', 'type'));
     }
 
     /**
@@ -61,6 +70,18 @@ class UserController extends Controller
           'avatar' => 'image|max:1024',
         ]);
 
+        $arr_roles = ['guru', 'siswa', 'admin-sekolah'];
+
+        if (in_array($request->type, $arr_roles) ) {
+          if ($request->school == null || $request->r_id == null) {
+            Session::flash("flash_notification", [
+              "level"=>"warning",
+              "message"=>"Akun dengan role $request->type wajib mengisi isian sekolah & nip/nis"
+            ]);
+            return redirect()->back();
+          }
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -82,8 +103,12 @@ class UserController extends Controller
           
           // save
           $user->avatar = $filename;     
-          $user->save();
         }
+
+        $user->school = $request->school;
+        $user->r_id = $request->r_id;
+        $user->is_verified = true;
+        $user->save();
 
         Session::flash("flash_notification", [
           "level"=>"success",
@@ -122,6 +147,18 @@ class UserController extends Controller
         'type' => 'required|string',
       ]);
 
+      $arr_roles = ['guru', 'siswa', 'admin-sekolah'];
+
+      if (in_array($request->type, $arr_roles) ) {
+        if ($request->school == null || $request->r_id == null) {
+          Session::flash("flash_notification", [
+            "level"=>"warning",
+            "message"=>"Akun dengan role $request->type wajib mengisi isian sekolah & nip/nis"
+          ]);
+          return redirect()->back();
+        }
+      }
+
       $user = User::find($id);
       
       // update role user jika ada perubahan
@@ -157,8 +194,10 @@ class UserController extends Controller
         $user->avatar = $filename;
       }
 
-      $user->name = $request->get('name');
-      $user->email = $request->get('email');
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->school = $request->school;
+      $user->r_id = $request->r_id;
       $user->save();
     
       Session::flash("flash_notification", [
@@ -178,8 +217,10 @@ class UserController extends Controller
     public function destroy(Request $request, $id)
     {
         $user = User::find($id);
-        $user->detachRole($user->role);
+        
+        $user->detachRoles($user->roles);
         $avatar = $user->avatar;
+        
         if(!$user->delete()) return redirect()->back();
 
         // handle hapus data via ajax
@@ -204,6 +245,18 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user.index');
+    }
+    
+    public function verification($id){
+        User::where('id', $id)
+            ->update(['is_verified' => 1]);
+
+        Session::flash("flash_notification", [
+          "level"=>"success",
+          "message"=>"Berhasil memverifikasi"
+        ]);
+
+        return redirect()->back();
     }
 
     public function profile()
@@ -248,7 +301,9 @@ class UserController extends Controller
       }
 
       $user->name = $request->get('name');
-      $user->email = $request->get('email');        
+      $user->email = $request->get('email');      
+      $user->school = $request->school;
+      $user->r_id = $request->r_id;  
       $user->save();
   	
   		Session::flash("flash_notification", [

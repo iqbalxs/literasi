@@ -7,6 +7,12 @@
 <script src="{{ asset('/js/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('/js/custom.js') }}"></script>
+<!-- Delete confimation -->
+<script>
+      $(".delete").on("submit", function(){
+            return confirm("Apakah anda yakin akan menghapus ini?");
+      });
+</script>
 @yield('js')
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

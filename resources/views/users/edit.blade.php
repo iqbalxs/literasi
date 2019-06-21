@@ -51,6 +51,28 @@
                   @endif
               </div>
           </div>
+          <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
+              <label for="content" class="col-md-4 col-sm-4 col-xs-12 control-label">Sekolah</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" class="form-control" name="school" value="{{ $user->school }}" placeholder="Wajib diisi untuk guru / siswa">
+                  @if ($errors->has('school'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('school') }}</strong>
+                      </span>
+                  @endif
+              </div>
+          </div>
+          <div class="form-group{{ $errors->has('r_id') ? ' has-error' : '' }}">
+              <label for="content" class="col-md-4 col-sm-4 col-xs-12 control-label">NIP / NIS</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" class="form-control" name="r_id" value="{{ $user->r_id }}" placeholder="Wajib diisi untuk guru / siswa">
+                  @if ($errors->has('r_id'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('r_id') }}</strong>
+                      </span>
+                  @endif
+              </div>
+          </div>
           <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
               <label for="content" class="col-md-4 col-sm-4 col-xs-12 control-label">Foto profil</label>
               <div class="col-md-6 col-sm-6 col-xs-12">
