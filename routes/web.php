@@ -43,6 +43,7 @@ Route::get('/', 'FrontPBAController@beranda');
 //route front kkp
 Route::get('/karya-siswa', 'FrontKKPController@karyaSiswa');
 Route::get('/karya-siswa/view/{slug}', 'FrontKKPController@karyaSiswaView');
+Route::post('/karya-siswa/rate/{id}', 'FrontKKPController@karyaSiswaRate')->name('student.rate')->middleware('auth');
 Route::get('/karya-guru', 'FrontKKPController@karyaGuru');
 Route::get('/karya-guru/view/{slug}', 'FrontKKPController@karyaGuruView');
 Route::get('/publikasi-ilmiah', 'FrontKKPController@pubIlmiah');

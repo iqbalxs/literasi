@@ -25,6 +25,7 @@
 
     <!-- Main Style -->
     <link href="{{ asset('front-end/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('front-end/css/custom.css') }}" rel="stylesheet">
 
     <!-- Fonts -->
 
@@ -260,6 +261,7 @@
    
   <!-- Custom js -->
   <script type="text/javascript" src="{{ asset('front-end/js/custom.js') }}"></script>
+  @yield('scripts')
   
   <script type='text/javascript'>
     $(document).ready(function() {

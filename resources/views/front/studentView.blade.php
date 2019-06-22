@@ -14,6 +14,11 @@
           <div class="row">
             <div class="col-md-8">
               <div class="blog-archive-left">
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                      {{ Session::get('success') }}
+                    </div>
+                @endif
                 <!-- Start blog news single -->
                 <article class="blog-news-single">
                   @isset($students->image)    
@@ -27,6 +32,14 @@
                   </div>
                   <div class="blog-news-details blog-single-details">
                     {!! $students->content !!}
+
+                    <hr>
+                    <form action="{{ route('student.rate', $students->id)}}" id="form-rate" method="POST">
+                        {{ csrf_field() }} 
+                        RATING
+                        <input id="rate_star" name="rate_star" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs" value="{{ $students->averageRating }}" @unless (Auth::check()) disabled @endunless>
+                        <small>Dari Total : {{ $students->ratings->count() }} pengulas</small>
+                      </form>
                   </div>
                 </article>
                 <!-- Start blog navigation -->
@@ -74,5 +87,15 @@
       </div>
     </div>
   </div>
+@endsection
+@section('scripts')
+  <script type="text/javascript" src="{{ asset('front-end/js/rating.js') }}"></script>
+  <script>
+    $('#rate_star').on('change', function(e){
+      if ($('#rate_star').val() != 0) {
+        $('#form-rate').submit();
+      }
+    })
+  </script>
 @endsection
 

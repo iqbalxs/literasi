@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\StudentPost;
 use App\TeacherPost;
+use willvincent\Rateable\Rating as Rating;
 use Session;
 use DB;
 
@@ -17,6 +18,25 @@ class FrontKKPController extends Controller
 						->orderBy('created_at', 'asc')
 						->paginate(5);
 		return view('front.students')->with(compact('students'));
+	}
+
+	public function karyaSiswaRate(Request $request, $id){
+		$user_id = \Auth::id();
+		$students = StudentPost::find($id);
+
+		$rating = new Rating;
+		$rating->rating = $request->rate_star;
+		$rating->user_id = $user_id;
+
+		$exists = $students->ratings->where('user_id', $user_id)->first();
+		
+		if ($exists) {
+			$exists->delete();
+		} 
+		
+		$students->ratings()->save($rating);
+
+		return redirect()->back()->with('success', 'Terima Kasih telah berpartisipai dalam memberi rating');
 	}
 
 	//view karya-siswa

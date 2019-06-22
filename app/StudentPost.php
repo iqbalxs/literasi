@@ -2,6 +2,7 @@
 
 namespace App;
 
+use willvincent\Rateable\Rateable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -9,6 +10,7 @@ use Spatie\Sluggable\SlugOptions;
 class StudentPost extends Model
 {
 		use HasSlug;
+		use Rateable;
 		
 		protected $fillable = ['title', 'content','user_id','viewcount','status'];
 		
