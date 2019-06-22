@@ -336,6 +336,6 @@ class UserController extends Controller
         "message"=>"Password berhasil diubah"
       ]);
 
-      return redirect('profile/password');
+      return redirect()->route('profile.password');
     }
 }

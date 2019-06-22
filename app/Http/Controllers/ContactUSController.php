@@ -9,6 +9,33 @@ use App\ContactUS;
 class ContactUSController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $contacts = ContactUS::query();
+
+        $data = $contacts->paginate(20);
+
+        return view('contacts.index')->with(compact('data'));
+    }
+
+    /**
+     * Show the detail
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $contact = ContactUS::findOrFail($id);
+        
+        return view('contacts.show')->with(compact('contact'));
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response

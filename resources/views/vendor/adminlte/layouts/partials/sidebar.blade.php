@@ -39,6 +39,7 @@
     <li class="{{set_active('announcements.index')}}"><a href="{{ route('announcements.index') }}"><i class='fa fa-volume-up'></i> <span>Pengumuman</span></a></li>
     <li class="{{set_active('news.index')}}"><a href="{{ route('news.index') }}"><i class='fa fa-newspaper-o'></i> <span>Berita</span></a></li>
     <li class="{{set_active('articles.index')}}"><a href="{{ route('articles.index') }}"><i class='fa fa-pencil'></i> <span>Artikel</span></a></li>
+    <li class="{{set_active('pesan.index')}}"><a href="{{ route('pesan.index') }}"><i class='fa fa-envelope'></i> <span>Pesan</span></a></li>
     <li class="{{set_active('user.index')}}"><a href="{{ route('user.index') }}"><i class='fa fa-users'></i> <span>Pengguna</span></a></li>
     <li class="treeview {{set_active(['dictionary','qna','greeting','history','background','orgchart'])}}">
         <a href="#"><i class='fa fa-link'></i> <span>Web</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -58,6 +59,18 @@
     <li class="{{set_active('karya-siswa.index')}}"><a href="{{ route('karya-siswa.index') }}"><i class='fa fa-book'></i> <span>Karya Siswa</span></a></li>
     @endrole
 
+    @role('admin-sekolah')
+    <li class="{{set_active('announcements.index')}}"><a href="{{ route('announcements.index') }}"><i class='fa fa-volume-up'></i> <span>Pengumuman</span></a></li>
+    <li class="{{set_active('news.index')}}"><a href="{{ route('news.index') }}"><i class='fa fa-newspaper-o'></i> <span>Berita</span></a></li>
+    <li class="{{set_active('articles.index')}}"><a href="{{ route('articles.index') }}"><i class='fa fa-pencil'></i> <span>Artikel</span></a></li>
+    <li class="{{set_active('user.index')}}"><a href="{{ route('user.index') }}"><i class='fa fa-users'></i> <span>Pengguna</span></a></li>
+    <li class="header">GURU</li>
+    <li class="{{set_active('karya-guru.index')}}"><a href="{{ route('karya-guru.index') }}"><i class='fa fa-pencil'></i> <span>Karya Guru</span></a></li>
+    <li class="{{set_active('publikasi-ilmiah.index')}}"><a href="{{ route('publikasi-ilmiah.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>
+    <li class="header">SISWA</li>
+    <li class="{{set_active('karya-siswa.index')}}"><a href="{{ route('karya-siswa.index') }}"><i class='fa fa-book'></i> <span>Karya Siswa</span></a></li>
+    @endrole
+    
     @role('guru')
     <li class="{{set_active('m-karya-guru.index')}}"><a href="{{ route('m-karya-guru.index') }}"><i class='fa fa-pencil'></i> <span>Karya Guru</span></a></li>
     <li class="{{set_active('m-publikasi-ilmiah.index')}}"><a href="{{ route('m-publikasi-ilmiah.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>

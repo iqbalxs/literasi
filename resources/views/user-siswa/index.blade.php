@@ -60,9 +60,9 @@
                   <td>{{ $data->school }}</td>
                   <td> 
                       @if($data->is_verified == true)
-                        <span class="label label-warning">Ya</span>
+                        <span class="label label-success">Ya</span>
                       @else
-                        <span class="label label-success">Tidak</span>
+                        <span class="label label-danger">Tidak</span>
                       @endif
                   </td>
                   <td><a href="{{ route('user-siswa.verification',$data->id) }}" class="btn btn-xs btn-info">Verifikasi</a></td>

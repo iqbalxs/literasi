@@ -18,8 +18,8 @@ Route::get('/register-student', function () {
 // profile - reset password
 Route::get('profile','UserController@profile')->name('profile.show');
 Route::patch('/profile/update','UserController@updateProfile')->name('profile.update');
-Route::get('/profile/password', 'UserController@editPassword')->name('profile.password');;
-Route::post('/profile/password', 'UserController@updatePassword')->name('profile.password.update');;
+Route::get('/profile/password', 'UserController@editPassword')->name('profile.password');
+Route::post('/profile/password', 'UserController@updatePassword')->name('profile.password.update');
 
 //route front - single post 
 Route::get('/kamus', 'FrontSpController@dictionary');
@@ -58,8 +58,8 @@ Route::group(['prefix'=>'main', 'middleware'=>'auth'], function () {
     Route::resource('news', 'NewsController');
     Route::resource('articles', 'ArticlesController');
     
-    // route user management
-    Route::resource('user', 'UserController');
+    // route some user management
+    Route::get('/user', 'UserController@index')->name('user.index');
     Route::get('/user/{id}/verification', 'UserController@verification')->name('user.verification');
 
     // route verifikasi karya guru
@@ -79,6 +79,18 @@ Route::group(['prefix'=>'main', 'middleware'=>'auth'], function () {
   | ROLE : ADMIN 
   |-------------------------------------------------------------------------- */
   Route::group(['middleware'=>'role:admin'], function () {
+
+    // contact-us
+    Route::get('/pesan', 'ContactUSController@index')->name('pesan.index');
+    Route::get('/pesan/{id}', 'ContactUSController@show')->name('pesan.show');
+
+    // user management
+    Route::get('/user/create', 'UserController@create')->name('user.create');
+    Route::post('/user', 'UserController@store')->name('user.store');
+    Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
+    Route::patch('/user/{id}/update', 'UserController@update')->name('user.update');
+    Route::delete('/user/{id}/destroy', 'UserController@destroy')->name('user.destroy');
+
     //route sp-all
     Route::get('web/kamus-kata', 'AllSPController@dictionary')->name('dictionary');
     Route::post('web/kamus-kata', 'AllSPController@dictionaryUpdate')->name('dictionary.save');
