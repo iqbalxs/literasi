@@ -10,37 +10,67 @@ class FrontSpController extends Controller
 {
     //view dictionary
 	public function dictionary(){
-		$dictionary = SinglePost::with('user')->find('101');
-		return view('front.dictionary')->with(compact('dictionary'));
+		$data = SinglePost::with('user')->find('101');
+
+		$additional = [
+			'title' => 'Kamus Kata'
+		];
+
+		return view('front.single-page')->with(compact('data', 'additional'));
 	}
 
 	//view qna
 	public function qna(){
-		$qna = SinglePost::find('202');
-		return view('front.qna')->with(compact('qna'));
+		$data = SinglePost::find('202');
+
+		$additional = [
+			'title' => 'FAQ'
+		];
+
+		return view('front.single-page')->with(compact('data', 'additional'));
 	}
 
 	//view greeting
 	public function greeting(){
-		$greeting = SinglePost::find('303');
-		return view('front.greeting')->with(compact('greeting'));
+		$data = SinglePost::find('303');
+
+		$additional = [
+			'title' => 'Sambutan'
+		];
+
+		return view('front.single-page')->with(compact('data', 'additional'));
 	}
 
 	//view history
 	public function history(){
-		$history = SinglePost::find('404');
-		return view('front.history')->with(compact('history'));
+		$data = SinglePost::find('404');
+
+		$additional = [
+			'title' => 'Sejarah'
+		];
+
+		return view('front.single-page')->with(compact('data', 'additional'));
 	}
 
 	//view background
 	public function background(){
-		$background = SinglePost::find('505');
-		return view('front.background')->with(compact('background'));
+		$data = SinglePost::find('505');
+
+		$additional = [
+			'title' => 'Latar Belakang'
+		];
+
+		return view('front.single-page')->with(compact('data', 'additional'));
 	}
 
 	//view orgchart
 	public function orgchart(){
-		$orgchart = SinglePost::find('606');
-		return view('front.orgchart')->with(compact('orgchart'));
+		$data = SinglePost::find('606');
+
+		$additional = [
+			'title' => 'Struktur Organisasi'
+		];
+
+		return view('front.single-page')->with(compact('data', 'additional'));
 	}
 }

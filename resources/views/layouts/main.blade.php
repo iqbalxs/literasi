@@ -144,7 +144,7 @@
                 <li>
                   <a href="{{ url('/pengumuman') }}">Pengumuman</a>
                   <a href="{{ url('/kamus') }}">Kamus</a>
-                  <a href="{{ url('/tanya-jawab') }}">Tanya Jawab</a>
+                  <a href="{{ url('/faq') }}">FAQ</a>
                 <li>
               </ul>
             </li>

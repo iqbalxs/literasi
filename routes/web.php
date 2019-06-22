@@ -23,7 +23,7 @@ Route::post('/profile/password', 'UserController@updatePassword');
 
 //route front - single post 
 Route::get('/kamus', 'FrontSpController@dictionary');
-Route::get('/tanya-jawab', 'FrontSpController@qna');
+Route::get('/faq', 'FrontSpController@qna');
 Route::get('/sambutan', 'FrontSpController@greeting');
 Route::get('/sejarah', 'FrontSpController@history');
 Route::get('/latar-belakang', 'FrontSpController@background');
@@ -42,11 +42,11 @@ Route::get('/', 'FrontPBAController@beranda');
 
 //route front kkp
 Route::get('/karya-siswa', 'FrontKKPController@karyaSiswa');
-Route::get('/karya-siswa/view/{id}', 'FrontKKPController@karyaSiswaView');
+Route::get('/karya-siswa/view/{slug}', 'FrontKKPController@karyaSiswaView');
 Route::get('/karya-guru', 'FrontKKPController@karyaGuru');
-Route::get('/karya-guru/view/{id}', 'FrontKKPController@karyaGuruView');
+Route::get('/karya-guru/view/{slug}', 'FrontKKPController@karyaGuruView');
 Route::get('/publikasi-ilmiah', 'FrontKKPController@pubIlmiah');
-Route::get('/publikasi-ilmiah/view/{id}', 'FrontKKPController@pubIlmiahView');
+Route::get('/publikasi-ilmiah/view/{slug}', 'FrontKKPController@pubIlmiahView');
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'role:admin']], function () {
   Route::resource('announcements', 'AnnouncementsController');

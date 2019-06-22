@@ -15,20 +15,29 @@ class FrontKKPController extends Controller
 		$students = StudentPost::with('user')
 						->where('status','=','publish')
 						->orderBy('created_at', 'asc')
-						->paginate(4);
+						->paginate(5);
 		return view('front.students')->with(compact('students'));
 	}
 
 	//view karya-siswa
-	public function karyaSiswaView($id){
-		$students = StudentPost::with('user')->where('status','=','publish')->find($id);
+	public function karyaSiswaView($slug){
+		$students = StudentPost::with('user')->where('status','=','publish')->where('slug',$slug)->first();
 
-		$count = $students->viewcount;
-		DB::table('student_posts')
-            ->where('id', $id)
-            ->update(['viewcount' => $count+1]);
+		if ($students) {
+			$count = $students->viewcount;
+			$students->viewcount = $count+1;
+			$students->save();
+		}
 
-		return view('front.studentView')->with(compact('students'));
+		// select previous post
+		$prev = DB::table('student_posts')->select('title','slug')
+						->where('id', '<', $students->id)->orderBy('id', 'desc')->first();
+    	
+		// select next post
+		$next = DB::table('student_posts')->select('title','slug')
+						->where('id', '>', $students->id)->first();
+
+		return view('front.studentView')->with(compact('students', 'prev', 'next'));
 	}
 
 	 //view karya-guru all
@@ -37,20 +46,31 @@ class FrontKKPController extends Controller
 						->where('category','=','karya_guru')
 						->where('status','=','publish')
 						->orderBy('created_at', 'asc')
-						->paginate(4);
+						->paginate(5);
 		return view('front.teacherkg')->with(compact('teacherkg'));
 	}
 
 	//view karya-guru
-	public function karyaGuruView($id){
-		$teacherkg = TeacherPost::with('user')->where('status','=','publish')->find($id);
+	public function karyaGuruView($slug){
+		$teacherkg = TeacherPost::with('user')->where('status','=','publish')->where('slug',$slug)->first();
 
-		$count = $teacherkg->viewcount;
-		DB::table('teacher_posts')
-            ->where('id', $id)
-            ->update(['viewcount' => $count+1]);
+		if ($teacherkg) {
+			$count = $teacherkg->viewcount;
+			$teacherkg->viewcount = $count+1;
+			$teacherkg->save();
+		}
 
-		return view('front.teacherkgView')->with(compact('teacherkg'));
+		// select previous post
+		$prev = DB::table('teacher_posts')->select('title','slug')
+						->where('category','=','karya_guru')
+						->where('id', '<', $teacherkg->id)->orderBy('id', 'desc')->first();
+    	
+		// select next post
+		$next = DB::table('teacher_posts')->select('title','slug')
+						->where('category','=','karya_guru')
+						->where('id', '>', $teacherkg->id)->first();
+
+		return view('front.teacherkgView')->with(compact('teacherkg', 'prev', 'next'));
 	}
 
 	//view publikasi-ilmiah all
@@ -59,19 +79,30 @@ class FrontKKPController extends Controller
 						->where('category','=','publikasi_ilmiah')
 						->where('status','=','publish')
 						->orderBy('created_at', 'asc')
-						->paginate(4);
+						->paginate(5);
 		return view('front.teacherpi')->with(compact('teacherpi'));
 	}
 
 	//view publikasi-ilmiah
-	public function pubIlmiahView($id){
-		$teacherpi = TeacherPost::with('user')->where('status','=','publish')->find($id);
+	public function pubIlmiahView($slug){
+		$teacherpi = TeacherPost::with('user')->where('status','=','publish')->where('slug',$slug)->first();
 
-		$count = $teacherpi->viewcount;
-		DB::table('teacher_posts')
-            ->where('id', $id)
-            ->update(['viewcount' => $count+1]);
+		if ($teacherpi) {
+			$count = $teacherpi->viewcount;
+			$teacherpi->viewcount = $count+1;
+			$teacherpi->save();
+		}
 
-		return view('front.teacherpiView')->with(compact('teacherpi'));
+		// select previous post
+		$prev = DB::table('teacher_posts')->select('title','slug')
+						->where('category','=','publikasi_ilmiah')
+						->where('id', '<', $teacherpi->id)->orderBy('id', 'desc')->first();
+    	
+		// select next post
+		$next = DB::table('teacher_posts')->select('title','slug')
+						->where('category','=','publikasi_ilmiah')
+						->where('id', '>', $teacherpi->id)->first();
+
+		return view('front.teacherpiView')->with(compact('teacherpi', 'prev', 'next'));
 	}
 }
