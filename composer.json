@@ -11,6 +11,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "santigarcor/laratrust": "3.2.*",
+        "spatie/laravel-sluggable": "^1.5",
+        "willvincent/laravel-rateable": "^1.07",
         "yajra/laravel-datatables-html": "1.0",
         "yajra/laravel-datatables-oracle": "7.5"
     },

@@ -196,7 +196,9 @@
             </div>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            @yield('breadcrumb')
+            <div class="single-page-header-right">
+              @yield('breadcrumb')
+            </div>
           </div>
         </div>
       </div>

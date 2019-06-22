@@ -15,20 +15,31 @@ class FrontPBAController extends Controller
 						->where('category','like','announcement')
 						->where('status','=','publish')
 						->orderBy('created_at', 'asc')
-						->paginate(4);
+						->paginate(5);
 		return view('front.announcements')->with(compact('announcements'));
 	}
 
 	//view announcements
-	public function announcementView($id){
-		$announcements = MainPost::with('user')->where('category','like','announcement')->find($id);
+	public function announcementView($slug){
+		$announcements = MainPost::with('user')->where('category','like','announcement')->where('slug',$slug)->first();
 
-		$count = $announcements->viewcount;
-		DB::table('main_posts')
-            ->where('id', $id)
-            ->update(['viewcount' => $count+1]);
+		if ($announcements) {
+			$count = $announcements->viewcount;
+			$announcements->viewcount = $count+1;
+			$announcements->save();
+		}
 
-		return view('front.announcementView')->with(compact('announcements'));
+		// select previous post
+		$prev = DB::table('main_posts')->select('title','slug')
+						->where('category','like','announcement')
+						->where('id', '<', $announcements->id)->orderBy('id', 'desc')->first();
+    	
+		// select next post
+		$next = DB::table('main_posts')->select('title','slug')
+						->where('category','like','announcement')
+						->where('id', '>', $announcements->id)->first();
+
+		return view('front.announcementView')->with(compact('announcements', 'prev', 'next'));
 	}
 
 	//view news all
@@ -37,20 +48,31 @@ class FrontPBAController extends Controller
 				->where('category','like','news')
 				->where('status','=','publish')
 				->orderBy('created_at', 'asc')
-				->paginate(4);
+				->paginate(5);
 		return view('front.news')->with(compact('news'));
 	}
 
 	//view news
-	public function newsView($id){
-		$news = MainPost::with('user')->where('category','like','news')->find($id);
+	public function newsView($slug){
+		$news = MainPost::with('user')->where('category','like','news')->where('slug',$slug)->first();
 
-		$count = $news->viewcount;
-		DB::table('main_posts')
-            ->where('id', $id)
-            ->update(['viewcount' => $count+1]);
+		if ($news) {
+			$count = $news->viewcount;
+			$news->viewcount = $count+1;
+			$news->save();
+		}
 
-		return view('front.newsView')->with(compact('news'));
+		// select previous post
+		$prev = DB::table('main_posts')->select('title','slug')
+						->where('category','like','news')
+						->where('id', '<', $news->id)->orderBy('id', 'desc')->first();
+    	
+		// select next post
+		$next = DB::table('main_posts')->select('title','slug')
+						->where('category','like','news')
+						->where('id', '>', $news->id)->first();
+
+		return view('front.newsView')->with(compact('news', 'prev', 'next'));
 	}
 
 	//view articles all
@@ -59,20 +81,31 @@ class FrontPBAController extends Controller
 					->where('category','like','articles')
 					->where('status','=','publish')
 					->orderBy('created_at', 'asc')
-					->paginate(4);
+					->paginate(5);
 		return view('front.articles')->with(compact('articles'));
 	}
 
 	//view articles
-	public function articleView($id){
-		$articles = MainPost::with('user')->where('category','like','articles')->find($id);
+	public function articleView($slug){
+		$articles = MainPost::with('user')->where('category','like','articles')->where('slug',$slug)->first();
 
-		$count = $articles->viewcount;
-		DB::table('main_posts')
-            ->where('id', $id)
-            ->update(['viewcount' => $count+1]);
+		if ($articles) {
+			$count = $articles->viewcount;
+			$articles->viewcount = $count+1;
+			$articles->save();
+		}
 
-		return view('front.articleView')->with(compact('articles'));
+		// select previous post
+		$prev = DB::table('main_posts')->select('title','slug')
+						->where('category','like','articles')
+						->where('id', '<', $articles->id)->orderBy('id', 'desc')->first();
+    	
+		// select next post
+		$next = DB::table('main_posts')->select('title','slug')
+						->where('category','like','articles')
+						->where('id', '>', $articles->id)->first();
+
+		return view('front.articleView')->with(compact('articles', 'prev', 'next'));
 	}
 
 	//view beranda - news all

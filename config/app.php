@@ -172,6 +172,7 @@ return [
         Yajra\Datatables\HtmlServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
 
         /*
          * Application Service Providers...

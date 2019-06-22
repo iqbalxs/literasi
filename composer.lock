@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9171823a10cf3cabc695f1ce0d89b09a",
+    "content-hash": "c4b945caf885ec7453127cd7eae15646",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -1672,6 +1672,56 @@
             "time": "2017-06-01T03:31:42+00:00"
         },
         {
+            "name": "spatie/laravel-sluggable",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-sluggable.git",
+                "reference": "a4afdb48554b075ff5272ba7a2fb2b50bee2d0db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/a4afdb48554b075ff5272ba7a2fb2b50bee2d0db",
+                "reference": "a4afdb48554b075ff5272ba7a2fb2b50bee2d0db",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.0.0|~5.1.0|~5.2.0|~5.3.0|~5.4.0",
+                "illuminate/support": "~5.0.0|~5.1.0|~5.2.0|~5.3.0|~5.4.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "orchestra/database": "~3.2.0|~3.3.0|~3.4.0@dev",
+                "orchestra/testbench": "~3.2.0|~3.3.0|~3.4.0@dev",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Sluggable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate slugs when saving Eloquent models",
+            "homepage": "https://github.com/spatie/laravel-sluggable",
+            "keywords": [
+                "laravel-sluggable",
+                "spatie"
+            ],
+            "time": "2018-05-08T07:54:18+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.12",
             "source": {
@@ -2883,6 +2933,65 @@
                 "environment"
             ],
             "time": "2019-01-29T11:11:52+00:00"
+        },
+        {
+            "name": "willvincent/laravel-rateable",
+            "version": "1.07",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/willvincent/laravel-rateable.git",
+                "reference": "010bcbf8d12cec79ba106d85ad7baeae48faa96c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/010bcbf8d12cec79ba106d85ad7baeae48faa96c",
+                "reference": "010bcbf8d12cec79ba106d85ad7baeae48faa96c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "willvincent\\Rateable\\RateableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
+                "psr-4": {
+                    "willvincent\\Rateable\\": "src/Rateable"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Will Vincent",
+                    "email": "tcindie@gmail.com"
+                }
+            ],
+            "description": "Allows multiple models to be rated with a fivestar like system.",
+            "keywords": [
+                "Rating",
+                "fivestar",
+                "laravel",
+                "laravel 5",
+                "rateable",
+                "vote"
+            ],
+            "time": "2018-08-27T16:13:28+00:00"
         },
         {
             "name": "yajra/laravel-datatables-html",

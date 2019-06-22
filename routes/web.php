@@ -33,11 +33,11 @@ Route::post('/contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController
 
 //route front pba
 Route::get('/pengumuman', 'FrontPBAController@announcements');
-Route::get('/pengumuman/view/{id}', 'FrontPBAController@announcementView');
+Route::get('/pengumuman/view/{slug}', 'FrontPBAController@announcementView');
 Route::get('/berita', 'FrontPBAController@news');
-Route::get('/berita/view/{id}', 'FrontPBAController@newsView');
+Route::get('/berita/view/{slug}', 'FrontPBAController@newsView');
 Route::get('/artikel', 'FrontPBAController@articles');
-Route::get('/artikel/view/{id}', 'FrontPBAController@articleView');
+Route::get('/artikel/view/{slug}', 'FrontPBAController@articleView');
 Route::get('/', 'FrontPBAController@beranda');
 
 //route front kkp

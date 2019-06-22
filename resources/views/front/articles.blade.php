@@ -1,38 +1,52 @@
-@extends('layouts.app')
+@extends('layouts.main')
+@section('breadcrumb')
+  <ol class="breadcrumb">
+    <li><a href="{{ url('/') }}">Beranda</a></li>
+    <li class="active">Artikel</li>
+  </ol>
+@endsection
 @section('content')
   <div class="container">
     <div class="row">
-      <div class="col-md-9">
-          <div class="panel panel-default">
-           <div class="panel-body">
+      <div class="col-md-12">
+        <div class="blog-archive-area">
+          <div class="row">
+            <div class="col-md-8">
+              <!-- Start news area -->
+              <div class="title-area">
+                <h2 class="title">Artikel</h2>
+                <span class="line"></span>
+              </div>
+              <div class="blog-archive-left">
+                @forelse ($articles as $data)
+                  <article class="blog-news-single">
+                    @isset($data->image)    
+                      <div class="blog-news-img">
+                        <a href="{{ url('/artikel/view',$data->slug) }}"><img src="{{asset('img/'.$data->image)}}" alt="image"></a>
+                      </div>
+                    @endisset
+                    <div class="blog-news-title">
+                      <h2><a href="{{ url('/artikel/view',$data->slug) }}">{{$data->title}}</a></h2>
+                      <p>By <a class="blog-author" href="#">{{$data->user->name}}</a> <span class="blog-date">| {{ $data->created_at->format('j F Y') }}</span> | <i class="fa fa-eye"></i> {{$data->viewcount}}</p>
+                    </div>
+                    <div class="blog-news-details">
+                      <p>{!! str_limit($data->content, 600) !!}</p>
+                      <a class="blog-more-btn" href="{{ url('/artikel/view',$data->slug) }}">Lebih lengkap <i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                  </article>
+                @empty
+                    <p>Belum ada artikel terbaru :(</p>
+                @endforelse
 
-            @foreach ($articles as $data)
-            <h3>{{$data->title}}</h3>
-            <div class="info-meta">
-              <ul class="list-inline">
-                <li><i class="fa fa-clock-o"></i> {{ $data->created_at->format('F j, Y') }}</li>
-                <li><i class="fa fa-eye"></i> {{$data->viewcount}}</li>
-                <li><i class="fa fa-user"></i> Posted by {{$data->user->name}}</li>
-              </ul>
+                {{$articles->links()}}
+              </div>
+              <!-- End news area -->
             </div>
-            <hr>
-            <div class = "media">
-               <a class = "pull-left" href = "#">
-                <img class = "media-object " src="{{asset('img/'.$data->image)}}" alt="post-image" width="250" height="170" >
-               </a>
-               <div class = "media-body">
-               {!! str_limit($data->content, 600) !!}
-               </div>
-              <p style="text-align:right;">
-                <a class="btn btn-sm btn-primary" href="{{ url('/artikel/view',$data->id) }}" role="button">Baca</a>
-              </p>
-            </div>
-            <hr>
-            @endforeach
-            {{$articles->links()}}
-           </div>
+
+            @include('layouts._right-sidebar')
+          </div>
         </div>
-       </div>
+      </div>
     </div>
   </div>
 @endsection
