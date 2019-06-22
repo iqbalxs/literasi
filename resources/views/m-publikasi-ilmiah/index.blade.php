@@ -26,7 +26,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-				<p> <a class="btn btn-primary" href="{{ route('teacherpi.create') }}">Tambah</a> </p>
+				<p> <a class="btn btn-primary" href="{{ route('m-publikasi-ilmiah.create') }}">Tambah</a> </p>
             	{!! $html->table(['class'=>'table-striped']) !!}
 			</div>
 			<!-- /.box-body -->

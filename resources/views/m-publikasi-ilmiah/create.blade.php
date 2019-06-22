@@ -13,14 +13,14 @@
 		<div class="col-md-12">
 		<ul class="breadcrumb">
           <li><a href="{{ url('/home') }}">Dashboard</a></li>
-      		<li><a href="{{ url('/guru/teacherpi') }}">Publikasi Ilmiah</a></li>
-      		<li class="active">Ubah Publikasi Ilmiah</li>
+      		<li><a href="{{ route('m-publikasi-ilmiah.index') }}">Publikasi Ilmiah</a></li>
+      		<li class="active">Tambah Publikasi Ilmiah</li>
         </ul>
 
 		<!-- Default box -->
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">Ubah Publikasi Ilmiah</h3>
+				<h3 class="box-title">Tambah Publikasi Ilmiah</h3>
 
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -30,9 +30,9 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($teacherpi, ['url' => route('teacherpi.update', $teacherpi->id), 'method' => 'put', 'files'=>'true', 'class'=>'form-horizontal']) !!}
-				@include('teacherpi._form')
-			{!! Form::close() !!}
+				{!! Form::open(['url' => route('m-publikasi-ilmiah.store'),'method' => 'post', 'files'=>'true', 'class'=>'form-horizontal']) !!}
+		 			@include('m-publikasi-ilmiah._form')
+	   			{!! Form::close() !!}
 			</div>
 			<!-- /.box-body -->
 		</div>

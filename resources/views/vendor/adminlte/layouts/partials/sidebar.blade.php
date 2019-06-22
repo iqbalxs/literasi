@@ -56,20 +56,23 @@
     <li class="{{set_active('publikasi-ilmiah.index')}}"><a href="{{ route('publikasi-ilmiah.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>
     <li class="header">SISWA</li>
     <li class="{{set_active('karya-siswa.index')}}"><a href="{{ route('karya-siswa.index') }}"><i class='fa fa-book'></i> <span>Karya Siswa</span></a></li>
-
     @endrole
 
     @role('guru')
-    <li class="{{set_active('teacherkg.index')}}"><a href="{{ route('teacherkg.index') }}"><i class='fa fa-pencil'></i> <span>Karya Guru</span></a></li>
-    <li class="{{set_active('teacherpi.index')}}"><a href="{{ route('teacherpi.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>
+    <li class="{{set_active('m-karya-guru.index')}}"><a href="{{ route('m-karya-guru.index') }}"><i class='fa fa-pencil'></i> <span>Karya Guru</span></a></li>
+    <li class="{{set_active('m-publikasi-ilmiah.index')}}"><a href="{{ route('m-publikasi-ilmiah.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>
     <li class="header">SISWA</li>
-    <li class="{{set_active('teacherks.index')}}"><a href="{{ route('teacherks.index') }}"><i class='fa fa-users'></i> <span>Karya Siswa</span></a></li>
-    <li class="{{set_active('verifstudent.index')}}"><a href="{{ route('verifstudent.index') }}"><i class='fa fa-check'></i> <span>Verifikasi Akun Siswa</span></a></li>
+    <li class="{{set_active('karya-siswa.index')}}"><a href="{{ route('karya-siswa.index') }}"><i class='fa fa-users'></i> <span>Karya Siswa</span></a></li>
+    <li class="{{set_active('user-siswa.index')}}"><a href="{{ route('user-siswa.index') }}"><i class='fa fa-check'></i> <span>Verifikasi Akun Siswa</span></a></li>
     @endrole
     
     @role('siswa')
     <li class="{{set_active('students.index')}}"><a href="{{ route('students.index') }}"><i class='fa fa-pencil'></i> <span>Karya Siswa</span></a></li>
     @endrole
+
+    <li class="header">AKUN</li>
+    <li class="{{set_active('profile.show')}}"><a href="{{ route('profile.show') }}"><i class='fa fa-user'></i> <span>Profil Saya</span></a></li>
+    <li class="{{set_active('profile.password')}}"><a href="{{ route('profile.password') }}"><i class='fa fa-lock'></i> <span>Ubah Password</span></a></li>
 </ul><!-- /.sidebar-menu -->
 
 </section>

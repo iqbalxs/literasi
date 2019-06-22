@@ -6,21 +6,21 @@
 
 @section('main-content')
 @section('contentheader_title')
-	Karya Guru
+	Publikasi Ilmiah
 @endsection
 <div class="container-fluid spark-screen">
 	<div class="row">
 		<div class="col-md-12">
 		<ul class="breadcrumb">
           <li><a href="{{ url('/home') }}">Dashboard</a></li>
-      		<li><a href="{{ url('/guru/teacherkg') }}">Karya Guru</a></li>
-      		<li class="active">Ubah Karya Guru</li>
+      		<li><a href="{{ route('m-publikasi-ilmiah.index') }}">Publikasi Ilmiah</a></li>
+      		<li class="active">Ubah Publikasi Ilmiah</li>
         </ul>
 
 		<!-- Default box -->
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">Ubah Karya Guru</h3>
+				<h3 class="box-title">Ubah Publikasi Ilmiah</h3>
 
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -30,8 +30,8 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($teacherkg, ['url' => route('teacherkg.update', $teacherkg->id), 'method' => 'put', 'files'=>'true', 'class'=>'form-horizontal']) !!}
-				@include('teacherkg._form')
+			{!! Form::model($teacherpi, ['url' => route('m-publikasi-ilmiah.update', $teacherpi->id), 'method' => 'put', 'files'=>'true', 'class'=>'form-horizontal']) !!}
+				@include('m-publikasi-ilmiah._form')
 			{!! Form::close() !!}
 			</div>
 			<!-- /.box-body -->

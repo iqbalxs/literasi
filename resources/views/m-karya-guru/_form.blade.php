@@ -17,16 +17,19 @@
   {!! Form::label('name', 'Gambar', ['class'=>'col-md-2 control-label']) !!}
   <div class="col-md-4">
     {!! Form::file('image') !!}
-    @if (isset($teacherpi) && $teacherpi->image)
-      <p>{!! Html::image(asset('img/'.$teacherpi->image), null, ['class'=>'img-rounded img-responsive']) !!}</p>
+    @if (isset($teacherkg) && $teacherkg->image)
+      <p>{!! Html::image(asset('img/'.$teacherkg->image), null, ['class'=>'img-rounded img-responsive']) !!}</p>
     @endif
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
   </div>
 </div>
 
-{!! Form::hidden('category', 'publikasi_ilmiah' , ['class'=>'form-control']) !!}
+{!! Form::hidden('category', 'karya_guru' , ['class'=>'form-control']) !!}
 {!! Form::hidden('user_id', Auth::user()->id , ['class'=>'form-control']) !!}
-{!! Form::hidden('status', 'pending' , ['class'=>'form-control']) !!}
+
+@if(!isset($teacherkg))  
+  {!! Form::hidden('status', 'pending' , ['class'=>'form-control']) !!}
+@endif
 
 <div class="form-group">
  <div class="col-md-4 col-md-offset-2">

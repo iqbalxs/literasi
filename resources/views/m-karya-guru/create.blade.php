@@ -13,7 +13,7 @@
 		<div class="col-md-12">
 		<ul class="breadcrumb">
           <li><a href="{{ url('/home') }}">Dashboard</a></li>
-      		<li><a href="{{ url('/guru/teacherkg') }}">Karya Guru</a></li>
+      		<li><a href="{{ route('m-karya-guru.index') }}">Karya Guru</a></li>
       		<li class="active">Tambah Karya Guru</li>
         </ul>
 
@@ -30,8 +30,8 @@
 				</div>
 			</div>
 			<div class="box-body">
-				{!! Form::open(['url' => route('teacherkg.store'),'method' => 'post', 'files'=>'true', 'class'=>'form-horizontal']) !!}
-		 			@include('teacherkg._form')
+				{!! Form::open(['url' => route('m-karya-guru.store'),'method' => 'post', 'files'=>'true', 'class'=>'form-horizontal']) !!}
+		 			@include('m-karya-guru._form')
 	   			{!! Form::close() !!}
 			</div>
 			<!-- /.box-body -->

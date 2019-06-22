@@ -33,8 +33,8 @@ class TeacherKGController extends Controller
              ->addColumn('action', function($data){
                 return view('datatable._action', [
                 'model' => $data,
-                'form_url' => route('teacherkg.destroy', $data->id),
-                'edit_url' => route('teacherkg.edit', $data->id),
+                'form_url' => route('m-karya-guru.destroy', $data->id),
+                'edit_url' => route('m-karya-guru.edit', $data->id),
                 'confirm_message' => 'Yakin mau menghapus ' . $data->title . '?'
                 ]);
                 })->make(true);
@@ -48,7 +48,7 @@ class TeacherKGController extends Controller
         ->addColumn(['data' => 'status', 'name' => 'status', 'title' => 'Status'])
         ->addColumn(['data' => 'action', 'name'=>'action', 'title'=>'', 'orderable'=>false, 'searchable'=>false]);
 
-         return view('teacherkg.index')->with(compact('html'));
+         return view('m-karya-guru.index')->with(compact('html'));
     }
 
     /**
@@ -58,7 +58,7 @@ class TeacherKGController extends Controller
      */
     public function create()
     {
-        return view('teacherkg.create');
+        return view('m-karya-guru.create');
     }
 
     /**
@@ -80,32 +80,32 @@ class TeacherKGController extends Controller
 
         $teacherkg = TeacherPost::create($request->except('image'));
 
-        // isi field image jika ada image yang diupload
-        if ($request->hasFile('image')) {
-            
-         // Mengambil file yang diupload
-         $uploaded_image = $request->file('image');
+          // isi field image jika ada image yang diupload
+          if ($request->hasFile('image')) {
+              
+          // Mengambil file yang diupload
+          $uploaded_image = $request->file('image');
 
-         // mengambil extension file
-         $extension = $uploaded_image->getClientOriginalExtension();
+          // mengambil extension file
+          $extension = $uploaded_image->getClientOriginalExtension();
 
-         // membuat nama file random berikut extension
-         $filename = md5(time()) . '.' . $extension;
+          // membuat nama file random berikut extension
+          $filename = md5(time()) . '.' . $extension;
 
-         // menyimpan image ke folder public/img
-         $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
-         $uploaded_image->move($destinationPath, $filename);
+          // menyimpan image ke folder public/img
+          $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+          $uploaded_image->move($destinationPath, $filename);
 
-         // mengisi field image di teacherkg dengan filename yang baru dibuat
-         $teacherkg->image = $filename;
-         $teacherkg->save();
+          // mengisi field image di teacherkg dengan filename yang baru dibuat
+          $teacherkg->image = $filename;
+          $teacherkg->save();
         }
         Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan $teacherkg->title"
+          "level"=>"success",
+          "message"=>"Berhasil menyimpan $teacherkg->title"
         ]);
 
-        return redirect()->route('teacherkg.index');
+        return redirect()->route('m-karya-guru.index');
     }
 
     /**
@@ -128,7 +128,7 @@ class TeacherKGController extends Controller
     public function edit($id)
     {
         $teacherkg = TeacherPost::find($id);
-        return view('teacherkg.edit')->with(compact('teacherkg'));
+        return view('m-karya-guru.edit')->with(compact('teacherkg'));
     }
 
     /**
@@ -146,7 +146,6 @@ class TeacherKGController extends Controller
         'image' => 'image|max:2048',
         'category' => 'required',
         'user_id' => 'required',
-        'status' => 'required'
       ]);
 
        $teacherkg= TeacherPost::find($id);
@@ -187,7 +186,7 @@ class TeacherKGController extends Controller
          "message"=>"Berhasil menyimpan $teacherkg->title"
        ]);
 
-       return redirect()->route('teacherkg.index');
+       return redirect()->route('m-karya-guru.index');
     }
 
     /**
@@ -218,6 +217,6 @@ class TeacherKGController extends Controller
         "message"=>"Data Berhasil dihapus"
       ]);
 
-      return redirect()->route('teacherkg.index');
+      return redirect()->route('m-karya-guru.index');
     }
 }

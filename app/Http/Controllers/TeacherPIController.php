@@ -33,8 +33,8 @@ class TeacherPIController extends Controller
              ->addColumn('action', function($data){
                 return view('datatable._action', [
                 'model' => $data,
-                'form_url' => route('teacherpi.destroy', $data->id),
-                'edit_url' => route('teacherpi.edit', $data->id),
+                'form_url' => route('m-publikasi-ilmiah.destroy', $data->id),
+                'edit_url' => route('m-publikasi-ilmiah.edit', $data->id),
                 'confirm_message' => 'Yakin mau menghapus ' . $data->title . '?'
                 ]);
                 })->make(true);
@@ -48,7 +48,7 @@ class TeacherPIController extends Controller
         ->addColumn(['data' => 'status', 'name' => 'status', 'title' => 'Status'])
         ->addColumn(['data' => 'action', 'name'=>'action', 'title'=>'', 'orderable'=>false, 'searchable'=>false]);
 
-         return view('teacherpi.index')->with(compact('html'));
+         return view('m-publikasi-ilmiah.index')->with(compact('html'));
     }
 
     /**
@@ -58,7 +58,7 @@ class TeacherPIController extends Controller
      */
     public function create()
     {
-        return view('teacherpi.create');
+        return view('m-publikasi-ilmiah.create');
     }
 
     /**
@@ -80,32 +80,32 @@ class TeacherPIController extends Controller
 
         $teacherpi = TeacherPost::create($request->except('image'));
 
-        // isi field image jika ada image yang diupload
-        if ($request->hasFile('image')) {
-            
-         // Mengambil file yang diupload
-         $uploaded_image = $request->file('image');
+          // isi field image jika ada image yang diupload
+          if ($request->hasFile('image')) {
+              
+          // Mengambil file yang diupload
+          $uploaded_image = $request->file('image');
 
-         // mengambil extension file
-         $extension = $uploaded_image->getClientOriginalExtension();
+          // mengambil extension file
+          $extension = $uploaded_image->getClientOriginalExtension();
 
-         // membuat nama file random berikut extension
-         $filename = md5(time()) . '.' . $extension;
+          // membuat nama file random berikut extension
+          $filename = md5(time()) . '.' . $extension;
 
-         // menyimpan image ke folder public/img
-         $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
-         $uploaded_image->move($destinationPath, $filename);
+          // menyimpan image ke folder public/img
+          $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+          $uploaded_image->move($destinationPath, $filename);
 
-         // mengisi field image di teacherpi dengan filename yang baru dibuat
-         $teacherpi->image = $filename;
-         $teacherpi->save();
+          // mengisi field image di teacherpi dengan filename yang baru dibuat
+          $teacherpi->image = $filename;
+          $teacherpi->save();
         }
         Session::flash("flash_notification", [
         "level"=>"success",
         "message"=>"Berhasil menyimpan $teacherpi->title"
         ]);
 
-        return redirect()->route('teacherpi.index');
+        return redirect()->route('m-publikasi-ilmiah.index');
     }
 
     /**
@@ -128,7 +128,7 @@ class TeacherPIController extends Controller
     public function edit($id)
     {
         $teacherpi = TeacherPost::find($id);
-        return view('teacherpi.edit')->with(compact('teacherpi'));
+        return view('m-publikasi-ilmiah.edit')->with(compact('teacherpi'));
     }
 
     /**
@@ -146,7 +146,6 @@ class TeacherPIController extends Controller
         'image' => 'image|max:2048',
         'category' => 'required',
         'user_id' => 'required',
-        'status' => 'required'
       ]);
 
        $teacherpi= TeacherPost::find($id);
@@ -187,7 +186,7 @@ class TeacherPIController extends Controller
          "message"=>"Berhasil menyimpan $teacherpi->title"
        ]);
 
-       return redirect()->route('teacherpi.index');
+       return redirect()->route('m-publikasi-ilmiah.index');
     }
 
     /**
@@ -214,10 +213,10 @@ class TeacherPIController extends Controller
         $teacherpi->delete();
 
         Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Data Berhasil dihapus"
-      ]);
+          "level"=>"success",
+          "message"=>"Data Berhasil dihapus"
+        ]);
 
-      return redirect()->route('teacherpi.index');
+      return redirect()->route('m-publikasi-ilmiah.index');
     }
 }
