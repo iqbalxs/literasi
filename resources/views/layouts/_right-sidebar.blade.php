@@ -27,35 +27,30 @@
     <!-- Start sidebar widget -->
     <div class="sidebar-widget">
       <h4 class="widget-title">Karya Siswa Terbaik</h4>
-      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+        @forelse (\App\StudentPost::getRatedPost(4)->get() as $item)
+          <div class="media">
+            <div class="media-left">
+              <a href="{{ url('/karya-siswa/view',$item->slug) }}">
+                <img class="media-object" src="{{asset('img/'.$item->image)}}" alt="..." height="70px" width="70px">
+              </a>
+            </div>
+            <div class="media-body">
+              <a href="{{ url('/karya-siswa/view',$item->slug) }}">
+                <h5 class="media-heading">{{ strtoupper(str_limit($item->title, 29)) }}</h5>
+              </a>
+              <small>
+                <p>
+                  by {{ $item->user->name }} | {{ $item->created_at->format('j F Y') }} <br>
+                  <i class="fa fa-star"></i> {{ number_format($item->averageRating, 1) }}
+                </p>
+              </small>
+            </div>
+          </div>
+        @empty
+          <p>Belum ada data.</p>
+        @endforelse
     </div>
-    <!-- Start sidebar widget -->
-    {{-- <div class="sidebar-widget">
-      <h4 class="widget-title">Tags</h4>
-      <div class="tag-cloud">
-        <a href="#">Responsive</a>
-        <a href="#">Design</a>
-        <a href="#">Modern</a>
-        <a href="#">Business</a>
-        <a href="#">Software</a>
-        <a href="#">Photoshop</a>
-        <a href="#">Fashion</a>                      
-        <a href="#">News</a>
-        <a href="#">Health</a>
-        <a href="#">Education</a>
-      </div>
-    </div> --}}
-    <!-- Start sidebar widget -->
-    <div class="sidebar-widget">
-      <h4 class="widget-title">Archive</h4>
-      <ul class="widget-archive">
-        <li><a href="#">November 2015<span>(35)</span></a></li>
-        <li><a href="#">October 2015<span>(55)</span></a></li>
-        <li><a href="#">September 2015<span>(65)</span></a></li>
-        <li><a href="#">August 2015<span>(75)</span></a></li>
-        <li><a href="#">July 2015<span>(105)</span></a></li>
-      </ul>
-    </div>
+    
     <!-- Start sidebar widget -->
     <div class="sidebar-widget">
       <h4 class="widget-title">Penting</h4>

@@ -36,6 +36,9 @@ class FrontKKPController extends Controller
 		
 		$students->ratings()->save($rating);
 
+		$students->average_rate = number_format($students->averageRating, 1);
+		$students->save();
+
 		return redirect()->back()->with('success', 'Terima Kasih telah berpartisipai dalam memberi rating');
 	}
 

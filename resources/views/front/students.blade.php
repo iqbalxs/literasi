@@ -27,7 +27,7 @@
                     @endisset
                     <div class="blog-news-title">
                       <h2><a href="{{ url('/karya-siswa/view',$data->slug) }}">{{$data->title}}</a></h2>
-                      <p>By <a class="blog-author" href="#">{{$data->user->name}}</a> <span class="blog-date">| {{ $data->created_at->format('j F Y') }}</span> | <i class="fa fa-eye"></i> {{$data->viewcount}}</p>
+                      <p>By <a class="blog-author" href="#">{{$data->user->name}}</a> <span class="blog-date">| {{ $data->created_at->format('j F Y') }}</span> | <i class="fa fa-eye"></i> {{$data->viewcount}} | <i class="fa fa-star"></i> {{ number_format($data->averageRating, 1) }}</p>
                     </div>
                     <div class="blog-news-details">
                       <p>{!! str_limit($data->content, 600) !!}</p>

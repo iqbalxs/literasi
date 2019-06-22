@@ -28,4 +28,8 @@ class StudentPost extends Model
 		{
 			return $this->belongsTo('App\User');
 		}
+
+		public function scopeGetRatedPost($query, $value){
+			return $query->orderBy('average_rate', 'desc')->limit($value);
+		}
 }

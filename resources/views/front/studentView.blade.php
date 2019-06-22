@@ -28,7 +28,7 @@
                   @endisset
                   <div class="blog-news-title">
                     <h2>{{$students->title}}</h2>
-                    <p>By <a class="blog-author" href="#">{{$students->user->name}}</a> <span class="blog-date">| {{ $students->created_at->format('j F Y') }}</span> | <i class="fa fa-eye"></i> {{$students->viewcount}}</p>
+                    <p>By <a class="blog-author" href="#">{{$students->user->name}}</a> <span class="blog-date">| {{ $students->created_at->format('j F Y') }}</span> | <i class="fa fa-eye"></i> {{$students->viewcount}} | <i class="fa fa-star"></i> {{ number_format($students->averageRating, 1) }}</p>
                   </div>
                   <div class="blog-news-details blog-single-details">
                     {!! $students->content !!}
@@ -37,7 +37,7 @@
                     <form action="{{ route('student.rate', $students->id)}}" id="form-rate" method="POST">
                         {{ csrf_field() }} 
                         RATING
-                        <input id="rate_star" name="rate_star" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs" value="{{ $students->averageRating }}" @unless (Auth::check()) disabled @endunless>
+                        <input id="rate_star" name="rate_star" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs" value="{{ number_format($students->averageRating, 1) }}" @unless (Auth::check()) disabled @endunless>
                         <small>Dari Total : {{ $students->ratings->count() }} pengulas</small>
                       </form>
                   </div>
