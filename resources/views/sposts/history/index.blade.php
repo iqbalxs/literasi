@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($history, ['url' => url('admin/web/history'),'method' => 'post', 'class'=>'form-horizontal']) !!}
+			{!! Form::model($history, ['url' => route('history.save'),'method' => 'post', 'class'=>'form-horizontal']) !!}
 				@include('sposts.history._form')
 			{!! Form::close() !!}
 			</div>

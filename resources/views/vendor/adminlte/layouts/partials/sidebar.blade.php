@@ -44,16 +44,19 @@
         <a href="#"><i class='fa fa-link'></i> <span>Web</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li class="{{set_active('dictionary')}}"><a href="{{ route('dictionary') }}">Kamus</a></li>
-            <li class="{{set_active('qna')}}"><a href="{{ url('/admin/web/qna') }}">Tanya Jawab</a></li>
-            <li class="{{set_active('greeting')}}"><a href="{{ url('/admin/web/greeting') }}">Sambutan</a></li>
-            <li class="{{set_active('history')}}"><a href="{{ url('/admin/web/history') }}">Sejarah</a></li>
-            <li class="{{set_active('background')}}"><a href="{{ url('/admin/web/background') }}">Latar Belakang</a></li>
-            <li class="{{set_active('orgchart')}}"><a href="{{ url('/admin/web/orgchart') }}">Struktur Organisasi</a></li>
+            <li class="{{set_active('qna')}}"><a href="{{ route('qna') }}">Tanya Jawab</a></li>
+            <li class="{{set_active('greeting')}}"><a href="{{ route('greeting') }}">Sambutan</a></li>
+            <li class="{{set_active('history')}}"><a href="{{ route('history') }}">Sejarah</a></li>
+            <li class="{{set_active('background')}}"><a href="{{ route('background') }}">Latar Belakang</a></li>
+            <li class="{{set_active('orgchart')}}"><a href="{{ route('orgchart') }}">Struktur Organisasi</a></li>
         </ul>
     </li>
     <li class="header">GURU</li>
-    <li class="{{set_active('verifkg.index')}}"><a href="{{ route('verifkg.index') }}"><i class='fa fa-pencil'></i> <span>Karya Guru</span></a></li>
-    <li class="{{set_active('verifpi.index')}}"><a href="{{ route('verifpi.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>
+    <li class="{{set_active('karya-guru.index')}}"><a href="{{ route('karya-guru.index') }}"><i class='fa fa-pencil'></i> <span>Karya Guru</span></a></li>
+    <li class="{{set_active('publikasi-ilmiah.index')}}"><a href="{{ route('publikasi-ilmiah.index') }}"><i class='fa fa-book'></i> <span>Publikasi Ilmiah</span></a></li>
+    <li class="header">SISWA</li>
+    <li class="{{set_active('karya-siswa.index')}}"><a href="{{ route('karya-siswa.index') }}"><i class='fa fa-book'></i> <span>Karya Siswa</span></a></li>
+
     @endrole
 
     @role('guru')

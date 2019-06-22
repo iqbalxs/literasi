@@ -13,7 +13,7 @@ use DB;
 use Yajra\Datatables\Datatables;
 use Yajra\Datatables\Html\Builder;
 
-class VerifPIController extends Controller
+class PublikasiIlmiahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,8 +30,8 @@ class VerifPIController extends Controller
              ->addColumn('action', function($data){
                 return view('datatable._action_verif', [
                 'model' => $data,
-                'form_url' => route('verifpi.destroy', $data->id),
-                'view_url' => route('verifpi.show', $data->id),
+                'form_url' => route('publikasi-ilmiah.destroy', $data->id),
+                'view_url' => route('publikasi-ilmiah.show', $data->id),
                 'confirm_message' => 'Yakin mau menghapus ' . $data->title . '?'
                 ]);
                 })->make(true);
@@ -45,7 +45,7 @@ class VerifPIController extends Controller
         ->addColumn(['data' => 'status', 'name' => 'status', 'title' => 'Status'])
         ->addColumn(['data' => 'action', 'name'=>'action', 'title'=>'', 'orderable'=>false, 'searchable'=>false]);
 
-         return view('verification.teacherpi')->with(compact('html'));
+         return view('publikasi-ilmiah.index')->with(compact('html'));
     }
 
     /**
@@ -78,7 +78,7 @@ class VerifPIController extends Controller
     public function show($id)
     {
         $verifpi = TeacherPost::find($id);
-        return view('verification.teacherpiShow')->with(compact('verifpi'));
+        return view('publikasi-ilmiah.show')->with(compact('verifpi'));
     }
 
     /**
@@ -87,7 +87,7 @@ class VerifPIController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function verification($id)
     {
         $verif = "publish";
         DB::table('teacher_posts')
@@ -95,11 +95,11 @@ class VerifPIController extends Controller
             ->update(['status' => $verif]);
 
         Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil memverifikasi"
+          "level"=>"success",
+          "message"=>"Berhasil memverifikasi"
         ]);
 
-        return redirect()->route('verifpi.index');
+        return redirect()->route('publikasi-ilmiah.index');
     }
 
     /**
@@ -142,6 +142,6 @@ class VerifPIController extends Controller
         "message"=>"Data Berhasil dihapus"
       ]);
 
-      return redirect()->route('verifpi.index');
+      return redirect()->route('publikasi-ilmiah.index');
     }
 }

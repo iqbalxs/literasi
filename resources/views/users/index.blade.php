@@ -50,7 +50,7 @@
         </div>
         <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">Tambah</a>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>

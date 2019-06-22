@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($background, ['url' => url('admin/web/background'),'method' => 'post', 'class'=>'form-horizontal']) !!}
+			{!! Form::model($background, ['url' => route('background.save'),'method' => 'post', 'class'=>'form-horizontal']) !!}
 				@include('sposts.background._form')
 			{!! Form::close() !!}
 			</div>

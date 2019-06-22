@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($greeting, ['url' => url('admin/web/greeting'),'method' => 'post', 'class'=>'form-horizontal']) !!}
+			{!! Form::model($greeting, ['url' => route('greeting.save'),'method' => 'post', 'class'=>'form-horizontal']) !!}
 				@include('sposts.greeting._form')
 			{!! Form::close() !!}
 			</div>

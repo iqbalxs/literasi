@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($orgchart, ['url' => url('admin/web/orgchart'),'method' => 'post', 'class'=>'form-horizontal']) !!}
+			{!! Form::model($orgchart, ['url' => route('orgchart.save'),'method' => 'post', 'class'=>'form-horizontal']) !!}
 				@include('sposts.orgchart._form')
 			{!! Form::close() !!}
 			</div>

@@ -13,7 +13,7 @@
 		<div class="col-md-12">
 		<ul class="breadcrumb">
           <li><a href="{{ url('/home') }}">Dashboard</a></li>
-      		<li><a href="{{ url('/admin/announcements') }}">Pengumuman</a></li>
+      		<li><a href="{{ route('announcements.index') }}">Pengumuman</a></li>
       		<li class="active">Tambah Pengumuman</li>
         </ul>
 

@@ -13,7 +13,7 @@ use DB;
 use Yajra\Datatables\Datatables;
 use Yajra\Datatables\Html\Builder;
 
-class VerifKGController extends Controller
+class KaryaGuruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,8 +30,8 @@ class VerifKGController extends Controller
              ->addColumn('action', function($data){
                 return view('datatable._action_verif', [
                 'model' => $data,
-                'form_url' => route('verifkg.destroy', $data->id),
-                'view_url' => route('verifkg.show', $data->id),
+                'form_url' => route('karya-guru.destroy', $data->id),
+                'view_url' => route('karya-guru.show', $data->id),
                 'confirm_message' => 'Yakin mau menghapus ' . $data->title . '?'
                 ]);
                 })->make(true);
@@ -45,7 +45,7 @@ class VerifKGController extends Controller
         ->addColumn(['data' => 'status', 'name' => 'status', 'title' => 'Status'])
         ->addColumn(['data' => 'action', 'name'=>'action', 'title'=>'', 'orderable'=>false, 'searchable'=>false]);
 
-         return view('verification.teacherkg')->with(compact('html'));
+         return view('karya-guru.index')->with(compact('html'));
     }
 
     /**
@@ -78,7 +78,7 @@ class VerifKGController extends Controller
     public function show($id)
     {
         $verifkg = TeacherPost::find($id);
-        return view('verification.teacherkgShow')->with(compact('verifkg'));
+        return view('karya-guru.show')->with(compact('verifkg'));
     }
 
     /**
@@ -87,7 +87,7 @@ class VerifKGController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function verification($id)
     {
         $verif = "publish";
         DB::table('teacher_posts')
@@ -99,7 +99,7 @@ class VerifKGController extends Controller
         "message"=>"Berhasil memverifikasi"
         ]);
 
-        return redirect()->route('verifkg.index');
+        return redirect()->route('karya-guru.index');
     }
 
     /**
@@ -142,6 +142,6 @@ class VerifKGController extends Controller
         "message"=>"Data Berhasil dihapus"
       ]);
 
-      return redirect()->route('verifkg.index');
+      return redirect()->route('karya-guru.index');
     }
 }

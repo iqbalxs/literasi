@@ -49,29 +49,46 @@ Route::get('/karya-guru/view/{slug}', 'FrontKKPController@karyaGuruView');
 Route::get('/publikasi-ilmiah', 'FrontKKPController@pubIlmiah');
 Route::get('/publikasi-ilmiah/view/{slug}', 'FrontKKPController@pubIlmiahView');
 
-Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'role:admin']], function () {
+Route::group(['prefix'=>'main', 'middleware'=>['auth', 'role:admin']], function () {
   Route::resource('announcements', 'AnnouncementsController');
   Route::resource('news', 'NewsController');
   Route::resource('articles', 'ArticlesController');
-  Route::resource('verifkg', 'VerifKGController');
+  
   Route::resource('verifpi', 'VerifPIController');
-  Route::resource('verifteacher', 'VerifTeacherController');
   Route::resource('user', 'UserController');
   Route::get('/user/{id}/verification', 'UserController@verification')->name('user.verification');
 
+  // route verifikasi karya siswa
+  Route::get('/karya-siswa', 'KaryaSiswaController@index')->name('karya-siswa.index');
+  Route::get('/karya-siswa/{id}/', 'KaryaSiswaController@show')->name('karya-siswa.show');
+  Route::get('/karya-siswa/{id}/verification', 'KaryaSiswaController@verification')->name('karya-siswa.verification');
+  Route::delete('/karya-siswa/{id}/destroy', 'KaryaSiswaController@verification')->name('karya-siswa.destroy');
+
+  // route verifikasi karya guru
+  Route::get('/karya-guru', 'KaryaGuruController@index')->name('karya-guru.index');
+  Route::get('/karya-guru/{id}/', 'KaryaGuruController@show')->name('karya-guru.show');
+  Route::get('/karya-guru/{id}/verification', 'KaryaGuruController@verification')->name('karya-guru.verification');
+  Route::delete('/karya-guru/{id}/destroy', 'KaryaGuruController@verification')->name('karya-guru.destroy');
+  
+  // route verifikasi publikasi ilmiah
+  Route::get('/publikasi-ilmiah', 'PublikasiIlmiahController@index')->name('publikasi-ilmiah.index');
+  Route::get('/publikasi-ilmiah/{id}/', 'PublikasiIlmiahController@show')->name('publikasi-ilmiah.show');
+  Route::get('/publikasi-ilmiah/{id}/verification', 'PublikasiIlmiahController@verification')->name('publikasi-ilmiah.verification');
+  Route::delete('/publikasi-ilmiah/{id}/destroy', 'PublikasiIlmiahController@verification')->name('publikasi-ilmiah.destroy');
+
   //route sp-all
-  Route::get('web/dictionary', 'AllSPController@dictionary')->name('dictionary');
-  Route::post('web/dictionary', 'AllSPController@dictionaryUpdate');
-  Route::get('web/qna', 'AllSPController@qna')->name('qna');
-  Route::post('web/qna', 'AllSPController@qnaUpdate');
-  Route::get('web/greeting', 'AllSPController@greeting')->name('greeting');
-  Route::post('web/greeting', 'AllSPController@greetingUpdate');
-  Route::get('web/history', 'AllSPController@history')->name('history');
-  Route::post('web/history', 'AllSPController@historyUpdate');
-  Route::get('web/background', 'AllSPController@background')->name('background');
-  Route::post('web/background', 'AllSPController@backgroundUpdate');
-  Route::get('web/orgchart', 'AllSPController@orgchart')->name('orgchart');
-  Route::post('web/orgchart', 'AllSPController@orgchartUpdate');
+  Route::get('web/kamus-kata', 'AllSPController@dictionary')->name('dictionary');
+  Route::post('web/kamus-kata', 'AllSPController@dictionaryUpdate')->name('dictionary.save');
+  Route::get('web/faq', 'AllSPController@qna')->name('qna');
+  Route::post('web/faq', 'AllSPController@qnaUpdate')->name('qna.save');
+  Route::get('web/sambutan', 'AllSPController@greeting')->name('greeting');
+  Route::post('web/sambutan', 'AllSPController@greetingUpdate')->name('greeting.save');
+  Route::get('web/sejarah', 'AllSPController@history')->name('history');
+  Route::post('web/sejarah', 'AllSPController@historyUpdate')->name('history.save');
+  Route::get('web/latar-belakang', 'AllSPController@background')->name('background');
+  Route::post('web/latar-belakang', 'AllSPController@backgroundUpdate')->name('background.save');
+  Route::get('web/struktur-organisasi', 'AllSPController@orgchart')->name('orgchart');
+  Route::post('web/struktur-organisasi', 'AllSPController@orgchartUpdate')->name('orgchart.save');
 });
 
 Route::group(['prefix'=>'guru', 'middleware'=>['auth', 'role:guru']], function () {

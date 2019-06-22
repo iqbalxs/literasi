@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($qna, ['url' => url('admin/web/qna'),'method' => 'post', 'class'=>'form-horizontal']) !!}
+			{!! Form::model($qna, ['url' => route('qna.save'),'method' => 'post', 'class'=>'form-horizontal']) !!}
 				@include('sposts.qna._form')
 			{!! Form::close() !!}
 			</div>

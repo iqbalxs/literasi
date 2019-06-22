@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-			{!! Form::model($dictionary, ['url' => url('admin/web/dictionary'),'method' => 'post', 'class'=>'form-horizontal']) !!}
+			{!! Form::model($dictionary, ['url' => route('dictionary.save'),'method' => 'post', 'class'=>'form-horizontal']) !!}
 				@include('sposts.dictionary._form')
 			{!! Form::close() !!}
 			</div>

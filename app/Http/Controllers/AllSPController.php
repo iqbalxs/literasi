@@ -36,7 +36,7 @@ class AllSPController extends Controller
         "message"=>"Berhasil mengubah $dictionary->title"
       ]);
 
-      return redirect('admin/web/dictionary');
+      return redirect()->route('dictionary');
 	}
 
 	//view edit qna
@@ -62,7 +62,7 @@ class AllSPController extends Controller
         "message"=>"Berhasil mengubah $qna->title"
       ]);
 
-      return redirect('admin/web/qna');
+      return redirect()->route('qna');
 	}
 
 	//view edit greeting
@@ -88,7 +88,7 @@ class AllSPController extends Controller
         "message"=>"Berhasil mengubah $greeting->title"
       ]);
 
-      return redirect('admin/web/greeting');
+      return redirect()->route('greeting');
 	}
 
 	//view edit history
@@ -114,7 +114,7 @@ class AllSPController extends Controller
         "message"=>"Berhasil mengubah $history->title"
       ]);
 
-      return redirect('admin/web/history');
+      return redirect()->route('history');
 	}
 
 	//view edit background
@@ -140,7 +140,7 @@ class AllSPController extends Controller
         "message"=>"Berhasil mengubah $background->title"
       ]);
 
-      return redirect('admin/web/background');
+      return redirect()->route('background');
 	}
 
 	//view edit orgchart
@@ -166,6 +166,6 @@ class AllSPController extends Controller
         "message"=>"Berhasil mengubah $orgchart->title"
       ]);
 
-      return redirect('admin/web/orgchart');
+      return redirect()->route('orgchart');
 	}
 }
