@@ -66,7 +66,7 @@
                 <li>
                   <div class="phone">
                     <i class="fa fa-phone"></i>
-                    +62(800) 699-7071
+                    (022) 71001124
                   </div>
                 </li>
                 <li>

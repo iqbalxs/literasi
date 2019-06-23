@@ -23,6 +23,10 @@ class FrontPBAController extends Controller
 	public function announcementView($slug){
 		$announcements = MainPost::with('user')->where('category','like','announcement')->where('slug',$slug)->first();
 
+		if (!$announcements) {
+			return abort(404);
+		}
+
 		if ($announcements) {
 			$count = $announcements->viewcount;
 			$announcements->viewcount = $count+1;
@@ -56,6 +60,10 @@ class FrontPBAController extends Controller
 	public function newsView($slug){
 		$news = MainPost::with('user')->where('category','like','news')->where('slug',$slug)->first();
 
+		if (!$news) {
+			return abort(404);
+		}
+
 		if ($news) {
 			$count = $news->viewcount;
 			$news->viewcount = $count+1;
@@ -88,6 +96,10 @@ class FrontPBAController extends Controller
 	//view articles
 	public function articleView($slug){
 		$articles = MainPost::with('user')->where('category','like','articles')->where('slug',$slug)->first();
+
+		if (!$articles) {
+			return abort(404);
+		}
 
 		if ($articles) {
 			$count = $articles->viewcount;

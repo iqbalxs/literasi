@@ -46,6 +46,10 @@ class FrontKKPController extends Controller
 	public function karyaSiswaView($slug){
 		$students = StudentPost::with('user')->where('status','=','publish')->where('slug',$slug)->first();
 
+		if (!$students) {
+			return abort(404);
+		}
+
 		if ($students) {
 			$count = $students->viewcount;
 			$students->viewcount = $count+1;
@@ -76,6 +80,10 @@ class FrontKKPController extends Controller
 	//view karya-guru
 	public function karyaGuruView($slug){
 		$teacherkg = TeacherPost::with('user')->where('status','=','publish')->where('slug',$slug)->first();
+
+		if (!$teacherkg) {
+			return abort(404);
+		}
 
 		if ($teacherkg) {
 			$count = $teacherkg->viewcount;
@@ -109,6 +117,10 @@ class FrontKKPController extends Controller
 	//view publikasi-ilmiah
 	public function pubIlmiahView($slug){
 		$teacherpi = TeacherPost::with('user')->where('status','=','publish')->where('slug',$slug)->first();
+
+		if (!$teacherpi) {
+			return abort(404);
+		}
 
 		if ($teacherpi) {
 			$count = $teacherpi->viewcount;
