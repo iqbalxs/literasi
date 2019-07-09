@@ -70,7 +70,7 @@
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-info-sign"></span>
                                 </span>
-                                <input id="r_id" type="number" placeholder="NIS" class="form-control" name="r_id" value="{{ old('r_id') }}" required>
+                                <input id="r_id" type="number" placeholder="Nomor Induk" class="form-control" name="r_id" value="{{ old('r_id') }}" required>
                             </div>
                             <div class="col-md-8 col-md-offset-2 input-group">
                                 @if ($errors->has('r_id'))

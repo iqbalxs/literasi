@@ -31,32 +31,59 @@
                 @endforelse
               </div>
               <!-- End news area -->
-
-              <!-- Start article area -->
+              
+              <!-- Start karya siswa area -->
               <div class="title-area">
-                <h2 class="title">Artikel Terbaru</h2>
+                <h2 class="title">Karya Siswa Terbaik</h2>
                 <span class="line"></span>
               </div>
               <div class="blog-archive-left">
-                @forelse ($articles as $data)
+                @forelse ($students as $data)
                   <article class="blog-news-single">
                     <div class="blog-news-img">
-                      <a href="{{ url('/artikel/view',$data->slug) }}"><img src="{{asset('img/'.$data->image)}}" alt="image"></a>
+                      <a href="{{ url('/berita/view',$data->slug) }}"><img src="{{asset('img/'.$data->image)}}" alt="image"></a>
                     </div>
                     <div class="blog-news-title">
-                      <h2><a href="{{ url('/artikel/view',$data->slug) }}">{{$data->title}}</a></h2>
-                      <p>By <a class="blog-author" href="#">{{$data->user->name}}</a> <span class="blog-date">| {{ $data->created_at->format('j F Y') }} </span> | <i class="fa fa-eye"></i> {{$data->viewcount}}</p>
+                      <h2><a href="{{ url('/berita/view',$data->slug) }}">{{$data->title}}</a></h2>
+                      <p>By <a class="blog-author" href="#">{{$data->user->name}}</a> <span class="blog-date">| {{ $data->created_at->format('j F Y') }}</span> | <i class="fa fa-eye"></i> {{$data->viewcount}}</p>
                     </div>
                     <div class="blog-news-details">
                       <p>{!! str_limit($data->content, 600) !!}</p>
-                      <a class="blog-more-btn" href="{{ url('/artikel/view',$data->slug) }}">Lebih lengkap <i class="fa fa-long-arrow-right"></i></a>
+                      <a class="blog-more-btn" href="{{ url('/berita/view',$data->slug) }}">Lebih lengkap <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                   </article>
                 @empty
-                    <p>Belum ada artikel terbaru :(</p>
+                    <p>Belum ada karya siswa terbaik :(</p>
                 @endforelse
               </div>
-              <!-- End article area -->
+              <!-- End karya siswa area -->
+              
+              <!-- Start karya guru area -->
+              <div class="title-area">
+                <h2 class="title">Karya Guru Terbaru</h2>
+                <span class="line"></span>
+              </div>
+              <div class="blog-archive-left">
+                @forelse ($teacherkg as $data)
+                  <article class="blog-news-single">
+                    <div class="blog-news-img">
+                      <a href="{{ url('/berita/view',$data->slug) }}"><img src="{{asset('img/'.$data->image)}}" alt="image"></a>
+                    </div>
+                    <div class="blog-news-title">
+                      <h2><a href="{{ url('/berita/view',$data->slug) }}">{{$data->title}}</a></h2>
+                      <p>By <a class="blog-author" href="#">{{$data->user->name}}</a> <span class="blog-date">| {{ $data->created_at->format('j F Y') }}</span> | <i class="fa fa-eye"></i> {{$data->viewcount}}</p>
+                    </div>
+                    <div class="blog-news-details">
+                      <p>{!! str_limit($data->content, 600) !!}</p>
+                      <a class="blog-more-btn" href="{{ url('/berita/view',$data->slug) }}">Lebih lengkap <i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                  </article>
+                @empty
+                    <p>Belum ada karya guru terbaru :(</p>
+                @endforelse
+              </div>
+              <!-- End karya guru area -->
+
             </div>
 
             @include('layouts._right-sidebar')

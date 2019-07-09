@@ -40,9 +40,16 @@
               <select class="form-control input-sm" name="type">
                   <option value="">--Pilih Hak Akses--</option>
                   <option value="all" @if($type == 'all') selected @endif>Semua</option>
-                @foreach (\App\Role::all() as $role)
-                  <option value="{{$role->name}}" @if($type == $role->name) selected @endif>{{$role->display_name}}</option>
-                @endforeach
+                  @role('admin-sekolah')
+                    @foreach (\App\Role::whereNotIn('name',['admin'])->get() as $role)
+                      <option value="{{$role->name}}" @if($type == $role->name) selected @endif>{{$role->display_name}}</option>
+                    @endforeach
+                  @endrole
+                  @role('admin')
+                    @foreach (\App\Role::all() as $role)
+                      <option value="{{$role->name}}" @if($type == $role->name) selected @endif>{{$role->display_name}}</option>
+                    @endforeach
+                  @endrole
               </select>
             </div>
             <button type="submit" class="btn btn-sm btn-flat btn-primary">Filter</button>

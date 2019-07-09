@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MainPost;
+use App\StudentPost;
+use App\TeacherPost;
 use Session;
 use DB;
 
@@ -126,15 +128,20 @@ class FrontPBAController extends Controller
 				->where('category','like','news')
 				->where('status','=','publish')
 				->orderBy('created_at', 'asc')
-				->limit(4)->get();
+				->limit(1)->get();
 
-		$articles = MainPost::with('user')
-					->where('category','like','articles')
-					->where('status','=','publish')
-					->orderBy('created_at', 'asc')
-					->limit(4)->get();
+		$students = StudentPost::GetRatedPost(1)->with('user')
+						->where('status','=','publish')
+						->orderBy('created_at', 'asc')
+						->get();
 
-		return view('welcome')->with(compact('news','articles','announcements'));
+		$teacherkg = TeacherPost::with('user')
+						->where('category','=','karya_guru')
+						->where('status','=','publish')
+						->orderBy('created_at', 'asc')
+						->limit(1)->get();
+
+		return view('welcome')->with(compact('news','students', 'teacherkg'));
 	}
 
 }

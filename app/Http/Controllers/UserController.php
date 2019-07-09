@@ -23,6 +23,12 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = User::query();
+
+        if (Auth::user()->hasRole('admin-sekolah')) {
+            $users->whereHas('roles', function ($query) {
+                $query->where('roles.name', '!=', 'admin');
+            });
+        }
         
         $type = $request->get('type');
         if ($request->has('type')) {
