@@ -24,12 +24,13 @@
     </style>
 
 </head>
+<body>
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                   <div class="text-center"><h2>Register Siswa</h2></div>
+                   <div class="text-center"><h2>Register Guru</h2></div>
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -122,12 +123,14 @@
                             </div>
                         </div>
 
-                        <input type="hidden" class="form-control" name="role" value="siswa" required>
+                        <input type="hidden" class="form-control" name="role" value="guru" required>
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-2">
                                 <label>
                                   <a href="{{ url('/login') }}">Sudah punya akun? Login disini</a>
+                                  <br> 
+                                  <a href="{{ url('/register') }}">Register siswa klik disini</a>
                                 </label>
                                 <button type="submit" class="btn btn-primary pull-right">
                                     Register
@@ -140,7 +143,7 @@
         </div>
     </div>
 </div>
-<!-- Scripts -->
+ <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.1.0.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 

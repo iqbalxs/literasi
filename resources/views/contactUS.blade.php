@@ -21,9 +21,9 @@
                 <div class="contact-area-left">
                   <h4>Alamat</h4>
                   <address class="single-address">
-                      <p><i class="fa fa-map-marker fa-fw"></i> Jl.Sulaksana No.1-6, Antapani-Bandung</p>
-                      <p><i class="fa fa-phone fa-fw"></i> Phone : (022) 71001124</p>
-                      <p><i class="fa fa-envelope fa-fw"></i> E-mail : info@literasi.co.id</p>
+                      <p><i class="fa fa-map-marker fa-fw"></i> Sekertariat - SMPN 2 Lembang Jl. Maribaya No. 129 Lembang 40391</p>
+                      <p><i class="fa fa-phone fa-fw"></i> Tlp. (022) 2786994</p>
+                      <!-- <p><i class="fa fa-envelope fa-fw"></i> E-mail : info@literasi.co.id</p> -->
                   </address> 
                   <div class="footer-right contact-social">
                      <a href="#"><i class="fa fa-facebook"></i></a>

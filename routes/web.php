@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/register-student', function () {
-    return view('auth.register_student');
+Route::get('/register-teacher', function () {
+    return view('auth.register_teacher');
 });
 
 // profile - reset password
@@ -114,7 +114,7 @@ Route::group(['prefix'=>'main', 'middleware'=>'auth'], function () {
     Route::get('/karya-siswa', 'KaryaSiswaController@index')->name('karya-siswa.index');
     Route::get('/karya-siswa/{id}/', 'KaryaSiswaController@show')->name('karya-siswa.show');
     Route::get('/karya-siswa/{id}/verification', 'KaryaSiswaController@verification')->name('karya-siswa.verification');
-    Route::delete('/karya-siswa/{id}/destroy', 'KaryaSiswaController@verification')->name('karya-siswa.destroy');
+    Route::delete('/karya-siswa/{id}/destroy', 'KaryaSiswaController@destroy')->name('karya-siswa.destroy');
   });
 
   /*--------------------------------------------------------------------------

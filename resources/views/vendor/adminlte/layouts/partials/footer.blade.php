@@ -5,5 +5,5 @@
         Version 1.0
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 Literasi Sekolah
+    <strong>Copyright &copy; 2019 {{config('app.name')}}
 </footer>

@@ -20,7 +20,7 @@
 						<div class="icon">
 							<i class="fa fa-book"></i>
 						</div>
-						<a href="#" class="small-box-footer">
+						<a href="{{route('karya-siswa.index')}}" class="small-box-footer">
 							Lihat detail <i class="fa fa-arrow-circle-right"></i>
 						</a>
 					</div>
@@ -36,7 +36,7 @@
 						<div class="icon">
 							<i class="fa fa-pencil"></i>
 						</div>
-						<a href="#" class="small-box-footer">
+						<a href="{{route('karya-guru.index')}}" class="small-box-footer">
 							Lihat detail <i class="fa fa-arrow-circle-right"></i>
 						</a>
 					</div>
@@ -52,7 +52,7 @@
 						<div class="icon">
 							<i class="fa fa-pencil-square"></i>
 						</div>
-						<a href="#" class="small-box-footer">
+						<a href="{{route('publikasi-ilmiah.index')}}" class="small-box-footer">
 							Lihat detail <i class="fa fa-arrow-circle-right"></i>
 						</a>
 					</div>
@@ -68,7 +68,7 @@
 						<div class="icon">
 							<i class="fa fa-file-text"></i>
 						</div>
-						<a href="#" class="small-box-footer">
+						<a href="{{route('articles.index')}}" class="small-box-footer">
 							Lihat detail <i class="fa fa-arrow-circle-right"></i>
 						</a>
 					</div>

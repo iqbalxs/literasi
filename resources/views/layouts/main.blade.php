@@ -66,15 +66,15 @@
                 <li>
                   <div class="phone">
                     <i class="fa fa-phone"></i>
-                    (022) 71001124
+                    (022) 2786994
                   </div>
                 </li>
-                <li>
+                <!-- <li>
                   <div class="mail">
                     <i class="fa fa-envelope"></i>
-                    info@literasi.co.id
+                    info@literasi.smpn2lembang.online
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -192,8 +192,8 @@
         <div class="row">
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="single-page-header-left">
-              <h2>LITERASI</h2>
-              <p>Selamat datang di website literasi</p>
+              <h2>{{config('app.name')}}</h2>
+              <p>Selamat datang di website {{config('app.name')}}</p>
             </div>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
