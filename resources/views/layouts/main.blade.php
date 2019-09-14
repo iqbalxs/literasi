@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{{ config('app.name') }}</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="{{ asset('front-end/images/favicon.ico') }}"/>
+    <link rel="shortcut icon" type="image/icon" href="{{ asset('front-end/images/favicon.png') }}"/>
     <!-- Font Awesome -->
     <link href="{{ asset('front-end/css/font-awesome.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
@@ -102,9 +102,9 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>              
+          <!-- <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>               -->
           <!-- IMG BASED LOGO  -->
-          <!-- <a class="navbar-brand" href="index.html"><img src="#" alt="logo"></a> -->                    
+          <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('front-end/images/logo.png') }}" height="35px" alt="logo"></a>                    
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
